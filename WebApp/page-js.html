@@ -1,0 +1,26 @@
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+  });
+
+  document.getElementById("btn").addEventListener("click", doStuff);
+
+  function doStuff() {
+
+    let userInfo = {};
+
+    userInfo.fname = document.getElementById("fname").value;
+    userInfo.lname = document.getElementById("lname").value;
+    userInfo.app = document.getElementById("app").value;
+
+    google.script.run.userClicked(userInfo);
+
+    document.getElementById("fname").value = "";
+    document.getElementById("lname").value = "";
+    document.getElementById("app").selectedIndex = 0;
+    M.FormSelect.init(document.getElementById("app"));
+  }
+
+</script>
